@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test your general knowledge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+     <!--Landing Page-->
+    <section class="landing-page">
+
+        <div class="wrapper">
+            <div class="flex-content">
+                <h1 class="vacation-heading">Welcome To Master Quiz</h1>
+                <button onclick="moveTo()" class="btn">Start Now</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!--header section-->
+    <header class="quiz-header" id="quiz-header">
+        <h1 class="heading">Master Quiz</h1>
+    </header>
+
+    <nav class="main-nav">
+        <a href="#">Home</a>
+        <a href="#quiz-packages">Quiz</a>
+        <a href="#play-quiz">Play Quiz</a>
+        <a href="#notes">Notes</a>
+        <a href="login.html">Login</a>
+        <a href="signUp.html">Register</a>
+    </nav>
+
+
+    <section class="quiz-packages-section" id="quiz-packages">
+        <h1 class="quiz-heading">Coding Quiz</h1>
+        <p class="quiz-text" >A coding quiz tests programming knowledge and problem-solving skills through questions or challenges in various languages like Java, Python, or JavaScript. It assesses understanding of algorithms, syntax, and logic, often with multiple-choice questions, coding exercises, or puzzles. These quizzes help learners practice and improve their coding proficiency.</p>
+        <div class="package-wrapper">
+            <div class="package-card">
+                <img src=".//images/java.jpg" alt="">
+                <p class="card-heading">Java</p>
+                <p class="card-text">Java is a versatile, high-level, object-oriented programming language known for its platform independence, 
+                    enabling code to run on any device with the Java Virtual Machine (JVM).</p>
+                <button class="btn" onclick="startQuiz('java')">Take Quiz</button>
+            </div>
+            <div class="package-card">
+                <img src=".//images/python.jpg" alt="">
+                <p class="card-heading">Python</p>
+                <p class="card-text">Python is a versatile, high-level programming language known for its simplicity and readability,
+                     widely used in web development, data science, automation, and artificial intelligence.</p>
+                <button class="btn" onclick="startQuiz('Python')">Take Quiz</button>
+            </div>
+            <div class="package-card">
+                <img src=".//images/js.png" alt="">
+                <p class="card-heading">JavaScript</p>
+                <p class="card-text">JavaScript is a versatile, high-level programming language primarily used for web development to create dynamic, interactive content on websites, including animations, forms, and user interfaces.</p>
+                <button class="btn" onclick="startQuiz('JavaScript')">Take Quiz</button>
+            </div>
+            <div class="package-card">
+                <img src=".//images/net.png" alt="">
+                <p class="card-heading">.Net</p>
+                <p class="card-text">.NET is a versatile, open-source development framework by Microsoft for building applications across platforms, including web, desktop, mobile, cloud, and IoT.</p>
+                <button class="btn" onclick="startQuiz('Net')">Take Quiz</button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="notes-section" id="notes">
+        <h1 class="quiz-heading">Subject notes</h1>
+        <div class="notes-div">
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/1iWDeRzcydGXWoy94gu9XfS0Aex4I2Lhm/preview" target="_blank">
+                    <img src="./images/java.jpg" alt="Java Notes">
+                </a>
+            </div>
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/1HGWx5VGUT9bolpRem6uub1kob9CBVee8/preview" target="_blank">
+                    <img src="./images/compiler.png" alt="Compiler Notes">
+                </a>
+            </div>
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/12J9dPHSiuYVkTeZhmtv-nmK8mJdaOFuS/preview" target="_blank">
+                    <img src="./images/Opearing-System.png" alt="Opearing-System Notes">
+                </a>
+            </div>
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/1g4dcMKAFaeE9Skre7krNFb5Lm4NRY_Ve/preview" target="_blank">
+                    <img src="./images/CN.png" alt="Computer Network Notes">
+                </a>
+            </div>
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/1jlPFYEzQ5nJs9a8TjEf6WqzkF_yGg9vX/preview" target="_blank">
+                    <img src="./images/DBMS.png" alt="DBMS Notes">
+                </a>
+            </div>
+            <div class="notes-wrapper">
+                <a href="https://drive.google.com/file/d/1iWFskz5g9JhhIQfe-hMf4uY5FcbNo5oL/preview" target="_blank">
+                    <img src="./images/OOP.png" alt="OOPs Notes">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play with Quizzes Section -->
+    <section class="play-quiz-section" id="play-quiz">
+        <h1 class="quiz-heading">Play with Quizzes</h1>
+        <p id="quiz-text">Enter a topic and get AI-generated quiz questions instantly!</p>
+        <div class="quiz-input-wrapper">
+            <input type="text" id="quiz-topic" placeholder="Enter quiz topic related to tech...">
+            <button onclick="redirectToQuiz()" class="btn">play</button>
+        </div>
+        <p class="warning">⚠️ After playing once, please wait 10 minutes before trying again.</p>
+    </section>
+    
+
+    
+
+    <footer class="footer-section">
+        <small>All Right Reserver</small>
+        <small>Developed  & Maintained By
+            <a href="https://www.youtube.com/@GenieAshwani" target="_blank">Ritam Sahoo</a>
+        </small>
+    </footer>
+
+    <script src="index.js"></script>
+    
+</body>
+</html>

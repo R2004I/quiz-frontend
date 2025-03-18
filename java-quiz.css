@@ -1,0 +1,116 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #230543, #2575fc);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    /* Added padding to prevent content overflow */
+    box-sizing: border-box;
+}
+
+.quiz-container {
+    background-color: rgb(21, 108, 163);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    /* Ensures items wrap on smaller screens */
+}
+
+.timer,
+.question-number {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.question {
+    font-size: 22px;
+    margin: 20px 0;
+    word-wrap: break-word;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+
+.option {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    margin: 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 16px;
+}
+
+.option:hover {
+    background-color: rgb(240, 249, 112);
+    transform: scale(1.02);
+}
+
+.option.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.next-button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 15px;
+}
+
+.next-button:hover {
+    background-color: #1d0ca1;
+    transform: scale(1.05);
+}
+
+/* --- Responsive Styles --- */
+@media (max-width: 600px) {
+    body {
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .quiz-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .option {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .next-button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}

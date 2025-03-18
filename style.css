@@ -1,0 +1,263 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: rgb(6, 10, 10);
+}
+
+.landing-page {
+    background: url('images/bg1.jpg');
+    color: white;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.landing-page .wrapper {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+}
+
+.landing-page .flex-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.landing-page .vacation-heading {
+    font-size: 50px;
+}
+
+.btn {
+    color: rgb(250, 247, 247);
+    text-decoration: none;
+    background-color: #B0D0D3;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background-color: #a0dd13;
+}
+
+
+
+
+/*
+header section
+*/
+
+.quiz-header {
+    background: radial-gradient(#058686, rgb(6, 90, 90));
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.quiz-header .heading {
+    font-size: 60px;
+}
+
+
+.main-nav {
+    background-color: #C08497;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 0 10px black;
+    position: sticky;
+    top: 0;
+
+}
+
+.main-nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 30px;
+    display: inline-block;
+
+}
+
+.main-nav a:hover {
+    background-color: #B0D0D3;
+    color: #C08497;
+    border-radius: 30px;
+}
+
+
+.quiz-heading {
+    font-size: 50px;
+    color: #F7AF9D
+}
+
+.quiz-text {
+    color: white;
+    font-size: 25px;
+    text-align: justify;
+    padding: 0px 40px;
+}
+
+.notes-section {
+    text-align: center;
+    padding: 100px;
+}
+
+.notes-section .notes-div {
+    margin-top: 20px;
+}
+
+.notes-section .notes-wrapper {
+    border: 2px solid black;
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10x gray;
+    display: inline-block;
+    margin: 20px;
+}
+
+.notes-section .notes-wrapper img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+
+}
+
+
+.notes-section .notes-wrapper img:hover {
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+}
+
+.quiz-packages-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.quiz-packages-section .quiz-heading {
+    padding-top: 60px;
+}
+
+.quiz-packages-section .package-wrapper {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+
+.package-wrapper .package-card {
+    box-shadow: 0 0 10px gray;
+    border-radius: 5px;
+    width: 260px;
+    padding: 10px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.package-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.package-card .card-heading {
+    font-size: 25px;
+    color: #C08497;
+
+}
+
+.quiz-packages-section.quiz-text {
+    color: #a0dd13;
+}
+
+.package-card .card-text {
+    font-size: 20px;
+    color: #B0D0D3;
+    height: 200px;
+}
+
+.package-card .btn {
+    border-radius: 40px;
+    box-shadow: 0 0 5px gray;
+    border: none;
+    margin-bottom: 10px;
+}
+
+
+.package-card .btn:hover {
+    cursor: pointer;
+}
+
+
+.footer-section {
+    background-color: black;
+    padding: 40px;
+    text-align: center;
+    color: teal;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+/* play with quiz section */
+
+.play-quiz-section {
+    text-align: center;
+    padding: 40px;
+    background: #090909;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#quiz-text {
+    text-align: center;
+    color: white;
+    padding: 5px;
+}
+
+.quiz-input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#quiz-topic {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #C08497;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.warning {
+    margin-top: 15px;
+    font-size: 14px;
+    color: red;
+}
