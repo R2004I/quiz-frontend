@@ -7,7 +7,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     const fullName = document.getElementById('fullName').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    const role = document.getElementById('role').value; // If you have a role selection
+    const role = "USER"; // If you have a role selection
 
     // Create the user object
     const user = {
@@ -18,7 +18,7 @@ document.getElementById('registerForm').addEventListener('submit', async (event)
     };
 
     try {
-        const response = await fetch('http://localhost:8081/api/register', {
+        const response = await fetch('http://localhost:8081/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

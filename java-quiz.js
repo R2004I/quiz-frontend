@@ -3,7 +3,9 @@ let questions = [];
 let correctAnswers = 0;
 let totalQuestions = 0;
 let selectedOption = null;
-let answered = false; // Track the selected option
+let answered = false;
+let timeLeft = 0;
+let timerInterval = null; // To store setInterval reference
 
 async function fetchQuestions() {
     const email = sessionStorage.getItem('email');
@@ -30,11 +32,43 @@ async function fetchQuestions() {
         questions = await response.json();
         totalQuestions = questions.length;
         document.getElementById('total-questions').textContent = totalQuestions;
+
+        // Start timer
+        startTimer(totalQuestions * 30);
+        
         displayQuestion();
     } catch (error) {
         console.error('Error fetching questions:', error);
         document.getElementById('question-text').textContent = "Failed to load questions. Please try again.";
     }
+}
+
+function startTimer(duration) {
+    timeLeft = duration;
+    updateTimerDisplay();
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            finishQuiz(); // Time's up, finish the quiz
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('time-left').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function finishQuiz() {
+    sessionStorage.setItem('quizScore', correctAnswers);
+    sessionStorage.setItem('totalQuestions', totalQuestions);
+    alert("Time's up! Submitting your quiz...");
+    window.location.href = 'result.html';
 }
 
 function displayQuestion() {
@@ -44,8 +78,8 @@ function displayQuestion() {
     const optionsContainer = document.getElementById('options-container');
     const currentQuestion = questions[currentQuestionIndex];
 
-    answered = false; // Reset the answered flag for the new question
-    selectedOption = null; // Reset the selected option for the new question
+    answered = false;
+    selectedOption = null;
 
     questionText.textContent = currentQuestion.questionText;
     optionsContainer.innerHTML = '';
@@ -65,35 +99,31 @@ function selectOption(button, option) {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (selectedOption) {
-        // Reset previous selection
         selectedOption.classList.remove('selected');
         answered = false;
     }
 
-    selectedOption = button; // Update selected option
-    selectedOption.classList.add('selected'); // Apply selected class for persistent color change
+    selectedOption = button;
+    selectedOption.classList.add('selected');
 
-    if (!answered) { // Ensure correctAnswers is updated only once per question
+    if (!answered) {
         answered = true;
         if (option === currentQuestion.correctAnswer) {
             correctAnswers++;
-            selectedOption.classList.add('correct'); // Apply correct styling
+            selectedOption.classList.add('correct');
         } else {
-            selectedOption.classList.add('incorrect'); // Apply incorrect styling
+            selectedOption.classList.add('incorrect');
         }
     }
 }
-
 
 function nextQuestion() {
     if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         displayQuestion();
     } else {
-        // Quiz Completed: Save score and redirect to results page
-        sessionStorage.setItem('quizScore', correctAnswers);
-        sessionStorage.setItem('totalQuestions', totalQuestions);
-        window.location.href = 'result.html';
+        clearInterval(timerInterval); // Stop timer on manual completion
+        finishQuiz();
     }
 }
 

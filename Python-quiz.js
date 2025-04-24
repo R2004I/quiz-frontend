@@ -5,6 +5,9 @@ let totalQuestions = 0;
 let selectedOption = null;
 let answered = false;
 
+let timerInterval = null;
+let timeLeft = 0;
+
 async function fetchQuestions() {
     const email = sessionStorage.getItem('email');
     const password = sessionStorage.getItem('password');
@@ -30,6 +33,8 @@ async function fetchQuestions() {
         questions = await response.json();
         totalQuestions = questions.length;
         document.getElementById('total-questions').textContent = totalQuestions;
+
+        startTimer(totalQuestions * 30); // ⏱ Start timer
         displayQuestion();
     } catch (error) {
         console.error('Error fetching questions:', error);
@@ -44,8 +49,8 @@ function displayQuestion() {
     const optionsContainer = document.getElementById('options-container');
     const currentQuestion = questions[currentQuestionIndex];
 
-    answered = false; // Reset the answered flag for the new question
-    selectedOption = null; // Reset the selected option for the new question
+    answered = false;
+    selectedOption = null;
 
     questionText.textContent = currentQuestion.python_questions;
     optionsContainer.innerHTML = '';
@@ -65,21 +70,20 @@ function selectOption(button, option) {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (selectedOption) {
-        // Reset previous selection
-        selectedOption.classList.remove('selected');
+        selectedOption.classList.remove('selected', 'correct', 'incorrect');
         answered = false;
     }
 
-    selectedOption = button; // Update selected option
-    selectedOption.classList.add('selected'); // Apply selected class for persistent color change
+    selectedOption = button;
+    selectedOption.classList.add('selected');
 
-    if (!answered) { // Ensure correctAnswers is updated only once per question
+    if (!answered) {
         answered = true;
         if (option === currentQuestion.py_correct_ans) {
             correctAnswers++;
-            selectedOption.classList.add('correct'); // Apply correct styling
+            selectedOption.classList.add('correct');
         } else {
-            selectedOption.classList.add('incorrect'); // Apply incorrect styling
+            selectedOption.classList.add('incorrect');
         }
     }
 }
@@ -89,11 +93,37 @@ function nextQuestion() {
         currentQuestionIndex++;
         displayQuestion();
     } else {
-        // Quiz Completed: Save score and redirect to results page
-        sessionStorage.setItem('quizScore', correctAnswers);
-        sessionStorage.setItem('totalQuestions', totalQuestions);
-        window.location.href = 'result.html';
+        clearInterval(timerInterval); // Stop timer
+        finishQuiz();
     }
+}
+
+function startTimer(durationInSeconds) {
+    timeLeft = durationInSeconds;
+    updateTimerDisplay();
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            finishQuiz();
+        }
+    }, 1000);
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('time-left').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function finishQuiz() {
+    alert("⏰ Time's up or quiz completed! Submitting your answers.");
+    sessionStorage.setItem('quizScore', correctAnswers);
+    sessionStorage.setItem('totalQuestions', totalQuestions);
+    window.location.href = 'result.html';
 }
 
 window.onload = fetchQuestions;
